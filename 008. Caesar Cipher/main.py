@@ -12,16 +12,20 @@ def caesar(original_text, shift_amount, encode_or_decode):
     global flag
 
     for letter in original_text:
-        if letter not in alphabet:
-            output_text += letter
-        elif encode_or_decode == "decode":
-            shifted_position = alphabet.index(letter) - shift_amount
-            shifted_position %= len(alphabet)
-            output_text += alphabet[shifted_position]
+        if encode_or_decode == "decode":
+            if letter not in alphabet:
+                output_text += letter
+            else:
+                shifted_position = alphabet.index(letter) - shift_amount
+                shifted_position %= len(alphabet)
+                output_text += alphabet[shifted_position]
         elif encode_or_decode == "encode":
-            shifted_position = alphabet.index(letter) + shift_amount
-            shifted_position %= len(alphabet)
-            output_text += alphabet[shifted_position]
+            if letter not in alphabet:
+                output_text += letter
+            else:
+                shifted_position = alphabet.index(letter) + shift_amount
+                shifted_position %= len(alphabet)
+                output_text += alphabet[shifted_position]
         else:
             print('your input is wrong')
             exit()
