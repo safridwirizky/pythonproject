@@ -60,6 +60,7 @@ while game_is_on:
     if snake.segments[0].distance(food) < 15:
         food.refresh()
         snake.extend()
-        score.refresh(score.NORMAL_WORD)
+        score.score += 1
+        score.refresh(score.NORMAL_WORD + str(score.score))
 
 screen.exitonclick()

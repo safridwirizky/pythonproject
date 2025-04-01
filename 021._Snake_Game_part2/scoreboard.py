@@ -5,15 +5,14 @@ class Scoreboard(Turtle):
         super().__init__()
         self.hideturtle()
         self.penup()
-        self.goto(0, 600)
+        self.goto(0, 260)
         self.color("white")
+        self.NORMAL_WORD = "Score: "
         self.score =0
-        self.NORMAL_WORD = f"Score: {self.score}"
         self.GAME_OVER = "Game Over"
-        self.refresh(self.NORMAL_WORD)
+        self.refresh(self.NORMAL_WORD + str(self.score))
     
     def refresh(self, word):
-        self.score += 1
         self.clear()
         self.write(word, align="center", font=("Arial", 24, "normal"))
     
