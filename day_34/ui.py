@@ -45,23 +45,14 @@ class QuizInterface():
 
     def button_true(self):
         answer = "True"
-        self.next_question(answer)
+        self.check_answer(answer)
 
     def button_false(self):
         answer = "False"
-        self.next_question(answer)
-
-    def next_question(self, answer):
-        if self.current_question.answer == answer:
-            messagebox.showinfo("Notification", "Your answer is right!")
-            
-            self.score += 1
-            self.label_score.config(text=f"Score: {self.score}")
-            
-        else:
-            messagebox.showinfo("Notification", "Your answer is wrong!")
-
-        self.question_number += 1
+        self.check_answer(answer)
+    
+    def next_question(self):
+        self.canvas.config(bg="white")
 
         if self.question_number < len(self.question_list):
             self.current_question = self.question_list[self.question_number]
@@ -70,5 +61,19 @@ class QuizInterface():
                 text=self.current_question.text
             )
         else:
-            messagebox.showinfo("Game Over", f"List of question is over. You get {self.score} score of 10 question.")
+            messagebox.showinfo("Game Over", f"List of question is over. You get {self.score} score of 10 questions.")
             exit()
+
+    def check_answer(self, answer):
+        if self.current_question.answer == answer:
+            self.canvas.config(bg="green")
+            
+            self.score += 1
+            self.label_score.config(text=f"Score: {self.score}")
+            
+        else:
+            self.canvas.config(bg="red")
+
+        self.question_number += 1
+
+        self.window.after(1000, self.next_question)
