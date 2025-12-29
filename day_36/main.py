@@ -1,11 +1,11 @@
-import requests
+import requests, os
 from datetime import datetime, timedelta
 
 STOCK = "TSLA"
 COMPANY_NAME = "Tesla Inc"
 API = "TIME_SERIES_DAILY"
-API_KEY_STOCK = "H69J2IC6891WO7LA"
-API_KEY_NEWS = "e96d5a444fb74664b4e1e85fa96899ca"
+API_KEY_STOCK = os.environ.get("OWM_API_KEY_STOCK")
+API_KEY_NEWS = os.environ.get("OWM_API_KEY_NEWS")
 URL_STOCK = "https://www.alphavantage.co/query"
 URL_NEWS = "https://newsapi.org/v2/everything"
 
@@ -14,7 +14,7 @@ params_stock = {
     "symbol": STOCK, 
     "apikey": API_KEY_STOCK
 }
-
+ 
 params_news = {
     "apiKey": API_KEY_NEWS,
     "q": COMPANY_NAME,
