@@ -1,0 +1,22 @@
+from pathlib import Path
+import csv
+from deep_translator import GoogleTranslator
+
+data_path = Path(__file__).parent / "ar_50k.txt"
+csv_path = Path(__file__).parent / "arabic.csv"
+
+with open(data_path, "r", encoding="utf-8", errors="replace") as file, \
+    open(csv_path, "w", encoding="utf-8", newline="") as csv_file:
+    
+    writer = csv.writer(csv_file)
+    writer.writerow(["Arabic", "Indonesian"])
+    
+    translator = GoogleTranslator(source="ar", target="id")
+
+    for count, line in enumerate(file):
+        data = line.strip().split()[0]
+
+        writer.writerow([data, translator.translate(data)])
+
+        if count > 98:
+            break
