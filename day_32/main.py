@@ -9,7 +9,7 @@ my_mail = os.getenv("MY_EMAIL")
 password = os.getenv("MY_PASSWORD")
 
 # Get data from csv
-df = pd.read_csv(BASE_DIR / "birthday.csv")
+df = pd.read_csv(BASE_DIR / "birthdays.csv")
 
 # Check birthday date
 today = datetime.now()
