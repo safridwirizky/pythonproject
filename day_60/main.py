@@ -21,8 +21,6 @@ def form_entry():
         h1 = 'Successfully sent your message.'
         subheading = ''
 
-        print(my_email + my_password)
-
         with smtplib.SMTP('smtp.gmail.com', port=587) as connection:
             connection.starttls()
             connection.login(user=my_email, password=my_password)
