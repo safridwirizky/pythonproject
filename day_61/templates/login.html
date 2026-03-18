@@ -1,0 +1,8 @@
+{% extends 'base.html' %} {% from 'bootstrap4/form.html' import render_form %} {% block head %} {{ super() }} {% endblock %} {% block title %} Login {% endblock %} {% block body %}
+<div class="container">
+  <h1>Login</h1>
+  <!-- This is where our form will go. -->
+
+  {{ render_form(form) }}
+</div>
+{% endblock %}
