@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+<!--Don't forget your import here-->
+{% from 'bootstrap5/form.html' import render_form %}
+
+<!-- Title -->
+{% block title %}Add A New Cafe{% endblock %}
+
+<!-- Content -->
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8">
+      <h1>Add a new cafe into the database</h1>
+
+      <!-- This is where your WTForm will go -->
+      {{ render_form(form) }}
+
+      <br />
+
+      <!-- Popup messages -->
+      {% with messages = get_flashed_messages() %}
+      <!-- If get messages -->
+      {% if messages %}
+      <!-- For each message -->
+      {% for msg in messages %}
+
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ msg }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+
+      {% endfor %} {% endif %} {% endwith %}
+
+      <p class="space-above"><a href="{{ url_for('cafes') }}">See all cafes</a></p>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
