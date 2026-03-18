@@ -1,4 +1,4 @@
-from flask import Flask, render_template, flash
+from flask import Flask, render_template
 from flask_bootstrap import Bootstrap5
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, TimeField, SelectField, URLField
@@ -80,14 +80,13 @@ def add_cafe():
             writer.writerow([
                 form.cafe.data,
                 form.location.data,
-                form.open.data,
-                form.close.data,
+                form.open.data.strftime('%H:%M'),
+                form.close.data.strftime('%H:%M'),
                 form.coffee.data,
                 form.wifi.data,
                 form.power.data
             ])
-        
-        flash('Data berhasil disimpan! 🎉')
+        return app.redirect(app.url_for('cafes'))
         
     # Exercise:
     # Make the form write a new row into cafe-data.csv

@@ -28,7 +28,15 @@
           {% for row in cafes[1:] %}
           <tr>
             {% for data in row %}
+
+            <!-- Conditioning location data -->
+            {% if data == row[1] %}
+            <td><a href="{{ data }}">Maps Link</a></td>
+            {% else %}
             <td>{{ data }}</td>
+            {% endif %}
+
+            <!---->
             {% endfor %}
           </tr>
           {% endfor %}

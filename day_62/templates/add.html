@@ -15,22 +15,6 @@
       <!-- This is where your WTForm will go -->
       {{ render_form(form) }}
 
-      <br />
-
-      <!-- Popup messages -->
-      {% with messages = get_flashed_messages() %}
-      <!-- If get messages -->
-      {% if messages %}
-      <!-- For each message -->
-      {% for msg in messages %}
-
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-        {{ msg }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-      </div>
-
-      {% endfor %} {% endif %} {% endwith %}
-
       <p class="space-above"><a href="{{ url_for('cafes') }}">See all cafes</a></p>
     </div>
   </div>
